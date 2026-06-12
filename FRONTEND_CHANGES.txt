@@ -1,0 +1,57 @@
+═══════════════════════════════════════════════════════════════════════════════
+FRONTEND CHANGES - MINIMAL
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ NO UI CHANGES - Just 2 things:
+
+1️⃣ Store assignedVulns from login response
+
+File: src/login.js (or wherever you handle login)
+
+Find the login success handler and ADD these lines:
+
+  if (data.success) {
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.user.id);
+    
+    // ✅ ADD THIS:
+    if (data.assignedVulns) {
+      localStorage.setItem("assignedVulns", JSON.stringify(data.assignedVulns));
+    }
+    
+    navigate("/dashboard");
+  }
+
+
+2️⃣ Send assignedVulns in ALL API calls to FakeBank
+
+File: src/fakebank/services/bankApi.js (or wherever you fetch)
+
+Example - wrap your fetch calls:
+
+Before:
+  export async function getBalance(userId) {
+    const response = await fetch(`http://localhost:5000/balance/${userId}`);
+    return response.json();
+  }
+
+After:
+  export async function getBalance(userId) {
+    const assignedVulns = JSON.parse(localStorage.getItem("assignedVulns") || "[]");
+    
+    const response = await fetch(`http://localhost:5000/balance/${userId}`, {
+      headers: {
+        'x-assigned-vulns': JSON.stringify(assignedVulns)  // ← ADD THIS
+      }
+    });
+    return response.json();
+  }
+
+Do this for ALL fetch calls to the backend (FakeBank operations).
+
+
+═══════════════════════════════════════════════════════════════════════════════
+That's it! Frontend is done. Just send the header in requests.
+═══════════════════════════════════════════════════════════════════════════════
+

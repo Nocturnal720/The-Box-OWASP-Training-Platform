@@ -1,0 +1,148 @@
+═══════════════════════════════════════════════════════════════════════════════
+MINIMAL CHANGES TO backend/server.js
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ ADD THIS IMPORT (at the top with other requires):
+
+  const { isVulnerable, vulnMiddleware } = require("./ModHelper/vulnRandomizer");
+
+
+2️⃣ ADD THIS MIDDLEWARE (right after app.use(express.json()); line):
+
+  app.use(express.json());
+  app.use(vulnMiddleware);  // ← ADD THIS
+
+
+3️⃣ ADD THIS FUNCTION (after database connection, before routes):
+
+function assignRandomVulnerabilities(userId, securityLabDb, callback) {
+  // Check if user has incomplete vulns from before
+  securityLabDb.query(
+    `SELECT GROUP_CONCAT(vuln_id) as vulns FROM user_vulnerabilities 
+     WHERE user_id = ? AND is_completed = 0`,
+    [userId],
+    (err, result) => {
+      if (err) {
+        console.error("Error checking vulns:", err);
+        return callback([]);
+      }
+      
+      // If user has incomplete vulns, return SAME ones (PERSISTENCE)
+      if (result[0] && result[0].vulns) {
+        console.log(`User ${userId} has incomplete vulns:`, result[0].vulns);
+        return callback(result[0].vulns.split(',').map(Number));
+      }
+      
+      // No incomplete vulns → Assign 8 NEW random ones
+      securityLabDb.query(
+        `SELECT id FROM vulnerabilities ORDER BY RAND() LIMIT 8`,
+        (err, vulns) => {
+          if (err || !vulns || vulns.length === 0) {
+            console.error("Error selecting vulns:", err);
+            return callback([]);
+          }
+          
+          const vulnIds = vulns.map(v => v.id);
+          console.log(`Assigning new vulns to user ${userId}:`, vulnIds);
+          
+          // Get next session number
+          securityLabDb.query(
+            `SELECT COALESCE(MAX(assignment_session), 0) + 1 as nextSession 
+             FROM user_vulnerabilities WHERE user_id = ?`,
+            [userId],
+            (err, sessionResult) => {
+              const sessionNum = sessionResult[0]?.nextSession || 1;
+              
+              // Insert assignments
+              const values = vulnIds.map(id => [userId, id, 0, sessionNum]);
+              securityLabDb.query(
+                `INSERT IGNORE INTO user_vulnerabilities 
+                 (user_id, vuln_id, is_completed, assignment_session) VALUES ?`,
+                [values],
+                (err) => {
+                  if (err) console.error("Error inserting vulns:", err);
+                  callback(vulnIds);
+                }
+              );
+            }
+          );
+        }
+      );
+    }
+  );
+}
+
+
+4️⃣ MODIFY THE /login ROUTE:
+
+Find your current /login route (around line 130) and update it to:
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  handleSQLiLogin(username, password, db, generateFlag, (err, user) => {
+    if (err) return res.status(500).send(err);
+    if (user) {
+      const token = Math.random().toString(36).substring(2);
+      const userId = user.id || user.user_id;
+      
+      db.query(`INSERT INTO sessions (user_id, token) VALUES (${userId}, '${token}')`);
+      logActivity(userId, "Logged in");
+      
+      // ✅ ASSIGN 8 RANDOM VULNERABILITIES
+      assignRandomVulnerabilities(userId, db, (assignedVulns) => {
+        const { vuln_info: vi, ...safeUser } = user;
+        res.json({ 
+          success: true, 
+          user: safeUser, 
+          token,
+          assignedVulns  // ← Send to frontend
+        });
+      });
+    } else {
+      res.json({ success: false, message: "Invalid credentials" });
+    }
+  });
+});
+
+
+═══════════════════════════════════════════════════════════════════════════════
+THAT'S ALL THE BACKEND CHANGES!
+═══════════════════════════════════════════════════════════════════════════════
+
+Now, for each vulnerable route, wrap it with isVulnerable():
+
+PATTERN:
+  if (isVulnerable(req, "VULN_NAME")) {
+    // existing vulnerable code
+  } else {
+    // safe fallback
+  }
+
+EXAMPLE - IDOR_BALANCE:
+
+Before:
+app.get("/balance/:userId", (req, res) => {
+  db.query(`SELECT balance FROM accounts WHERE user_id = ?`, [req.params.userId], (err, result) => {
+    res.json({ balance: result[0]?.balance || 0 });
+  });
+});
+
+After:
+app.get("/balance/:userId", (req, res) => {
+  if (isVulnerable(req, "IDOR_BALANCE")) {
+    // VULNERABLE: returns ANY user's balance
+    db.query(`SELECT balance FROM accounts WHERE user_id = ?`, [req.params.userId], (err, result) => {
+      res.json({ balance: result[0]?.balance || 0 });
+    });
+  } else {
+    // SAFE: only own balance
+    const authUserId = req.user?.id || req.headers['x-user-id'];
+    if (req.params.userId != authUserId) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+    db.query(`SELECT balance FROM accounts WHERE user_id = ?`, [req.params.userId], (err, result) => {
+      res.json({ balance: result[0]?.balance || 0 });
+    });
+  }
+});
+
