@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap');
+
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f4f0 0%, #faf9f7 100%);
+  font-family: 'DM Sans', sans-serif;
+  color: #111;
+}
+
+/* ── Top nav ── */
+.dash-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 48px;
+  border-bottom: 1px solid #e5e2db;
+  background: #f5f4f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(245, 244, 240, 0.95);
+}
+
+.dash-nav-brand {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.dash-nav-tag {
+  font-size: 11px;
+  color: #aaa;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.dash-nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dash-account-name {
+  display: inline-block;
+  max-width: 240px;
+  padding: 7px 12px;
+  border: 1px solid #ded9cf;
+  border-radius: 999px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  color: #4e4a44;
+  background: #fffdfa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-logout-btn {
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.dash-logout-btn:hover:not(:disabled) {
+  background: #2b2b2b;
+  border-color: #2b2b2b;
+}
+
+.dash-logout-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── Hero area ── */
+.dash-hero {
+  padding: 72px 48px 48px;
+  border-bottom: 1px solid #e5e2db;
+}
+
+.dash-hero-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 16px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+}
+
+.dash-hero h1 {
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #111;
+  max-width: 700px;
+  margin: 0 0 16px 0;
+}
+
+.dash-hero h1 em {
+  font-style: italic;
+  color: #888;
+}
+
+.dash-hero-sub {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+/* ── Cards grid ── */
+.dash-grid {
+  padding: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* ── Vulnerability cards ── */
+.vuln-card {
+  background: white;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #e5e2db;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.vuln-card:hover {
+  border-color: #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.vuln-card.expanded {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.vuln-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.vuln-card-num {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: #ccc;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.vuln-icon {
+  font-size: 32px;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.vuln-card h2 {
+  font-size: 19px;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.vuln-tagline {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.vuln-desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Learning path section ── */
+.learning-path {
+  margin: 12px 0;
+  padding: 16px;
+  background: #f9f8f6;
+  border-left: 3px solid #ddd;
+  border-radius: 4px;
+}
+
+.learning-path-label {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: #999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.learning-questions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.learning-questions li {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  padding-left: 0;
+}
+
+/* ── Color variants for cards ── */
+.vuln-card.color-access .learning-path {
+  border-left-color: #d97366;
+  background: rgba(217, 115, 102, 0.08);
+}
+
+.vuln-card.color-access h2 {
+  color: #a85d52;
+}
+
+.vuln-card.color-crypto .learning-path {
+  border-left-color: #5a9c9c;
+  background: rgba(90, 156, 156, 0.08);
+}
+
+.vuln-card.color-crypto h2 {
+  color: #3d6565;
+}
+
+.vuln-card.color-injection .learning-path {
+  border-left-color: #d94c4c;
+  background: rgba(217, 76, 76, 0.08);
+}
+
+.vuln-card.color-injection h2 {
+  color: #a03636;
+}
+
+.vuln-card.color-design .learning-path {
+  border-left-color: #9b8b6b;
+  background: rgba(155, 139, 107, 0.08);
+}
+
+.vuln-card.color-design h2 {
+  color: #5f5543;
+}
+
+.vuln-card.color-config .learning-path {
+  border-left-color: #d9a24c;
+  background: rgba(217, 162, 76, 0.08);
+}
+
+.vuln-card.color-config h2 {
+  color: #a0743d;
+}
+
+/* ── Card footer & buttons ── */
+.vuln-card-footer {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f0ede6;
+}
+
+.cyber-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  color: #111;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.cyber-button:hover {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+.cyber-button:active {
+  transform: scale(0.98);
+}
+
+/* ── Fake Bank accent card ── */
+.vuln-card.accent {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-color: #333;
+}
+
+.vuln-card.accent:hover {
+  border-color: #444;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.vuln-card.accent .vuln-card-num,
+.vuln-card.accent h2,
+.vuln-card.accent p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.vuln-card.accent .vuln-card-num {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.vuln-card.accent .vuln-tagline,
+.vuln-card.accent p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.vuln-card.accent .learning-path {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: rgba(255, 255, 255, 0.25);
+}
+
+.vuln-card.accent .learning-path-label,
+.vuln-card.accent .learning-questions li {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vuln-card.accent .vuln-card-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.vuln-card.accent .cyber-button {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  background: transparent;
+}
+
+.vuln-card.accent .cyber-button:hover {
+  background: white;
+  color: #111;
+  border-color: white;
+}
+
+/* ── Footer ── */
+.dash-footer {
+  padding: 48px;
+  text-align: center;
+  background: #f5f4f0;
+  border-top: 1px solid #e5e2db;
+  margin-top: 24px;
+}
+
+.dash-footer p {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.dash-footer strong {
+  color: #666;
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dash-nav {
+    padding: 18px 24px;
+  }
+
+  .dash-nav-right {
+    gap: 10px;
+  }
+
+  .dash-nav-tag {
+    display: none;
+  }
+
+  .dash-account-name {
+    max-width: 170px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .dash-logout-btn {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .dash-hero {
+    padding: 48px 24px 32px;
+  }
+
+  .dash-hero h1 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .dash-grid {
+    padding: 24px;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .vuln-card {
+    padding: 24px;
+  }
+
+  .vuln-card.expanded {
+    grid-column: auto;
+  }
+
+  .dash-footer {
+    padding: 32px 24px;
+  }
+}
+
+/* ── Animations ── */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vuln-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+.vuln-card:nth-child(1) { animation-delay: 0.05s; }
+.vuln-card:nth-child(2) { animation-delay: 0.1s; }
+.vuln-card:nth-child(3) { animation-delay: 0.15s; }
+.vuln-card:nth-child(4) { animation-delay: 0.2s; }
+.vuln-card:nth-child(5) { animation-delay: 0.25s; }
+.vuln-card:nth-child(6) { animation-delay: 0.3s; }

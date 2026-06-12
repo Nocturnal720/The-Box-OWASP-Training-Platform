@@ -1,0 +1,247 @@
+/* ============================================================================
+   FAKEBANK DASHBOARD WITH VULNERABILITY TRACKING
+   ========================================================================== */
+
+.fakebank-dashboard {
+  padding: 32px;
+  background: linear-gradient(135deg, #f5f4f0 0%, #faf9f7 100%);
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.dashboard-header {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #e5e2db;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.header-content h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  color: #111;
+  font-weight: 500;
+}
+
+.header-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── Progress Section ── */
+.progress-section {
+  flex: 0 0 300px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress-info .label {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progress-info .counter {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e5e2db;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #059669, #047857);
+  transition: width 0.4s ease;
+  border-radius: 4px;
+}
+
+/* ── Vulnerabilities Grid ── */
+.vulnerabilities-grid {
+  margin-bottom: 32px;
+}
+
+.vulnerabilities-grid h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.vulns-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.vuln-item {
+  background: white;
+  border: 1px solid #e5e2db;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.vuln-item:hover {
+  border-color: #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.vuln-item.completed {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.vuln-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.vuln-info .endpoint {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── Vulnerability Status ── */
+.vuln-status {
+  padding: 6px 12px;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.vuln-action-btn {
+  padding: 8px 16px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.vuln-action-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.vuln-action-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Stats Section ── */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e2db;
+  text-align: center;
+}
+
+.stat-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ── Loading & Error ── */
+.loading,
+.error {
+  padding: 48px 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+}
+
+.error {
+  color: #dc2626;
+  background: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .fakebank-dashboard {
+    padding: 16px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .progress-section {
+    flex: 1 1 auto;
+  }
+
+  .vulns-list {
+    grid-template-columns: 1fr;
+  }
+
+  .vuln-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .header-content h2 {
+    font-size: 20px;
+  }
+
+  .vulnerabilities-grid h3 {
+    font-size: 14px;
+  }
+}

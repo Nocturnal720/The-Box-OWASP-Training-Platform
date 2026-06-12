@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap');
+
+.fb-login-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f0f2f5;
+  font-family: 'Sora', sans-serif;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-login-card {
+  width: 400px;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e8eaf0;
+  padding: 48px 44px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fb-bank-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.fb-bank-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: #1a1a2e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.fb-bank-logo-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: -0.01em;
+}
+
+.fb-bank-logo-tag {
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+}
+
+.fb-login-card h2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.fb-login-card .fb-subtitle {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 28px;
+}
+
+.fb-login-credentials {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.fb-credentials-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.15rem;
+}
+
+.fb-credentials-subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 0.45rem;
+}
+
+.fb-credentials-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #d8e0ea;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.fb-credentials-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+}
+
+.fb-credentials-table th,
+.fb-credentials-table td {
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+  white-space: nowrap;
+}
+
+.fb-credentials-table th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+
+.fb-credentials-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.fb-credentials-hint {
+  margin-top: 0.5rem;
+  font-size: 0.73rem;
+  color: #475569;
+}
+
+.fb-login-error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.fb-field {
+  margin-bottom: 14px;
+}
+
+.fb-field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 7px;
+}
+
+.fb-login-card input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 9px;
+  background: #f8f9fb;
+  color: #1a1a2e;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.fb-login-card input:focus {
+  border-color: #1a1a2e;
+  background: white;
+}
+
+.fb-login-card input::placeholder { color: #c5c2bc; }
+
+.fb-login-card button {
+  margin-top: 22px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #1a1a2e;
+  color: white;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+}
+
+.fb-login-card button:hover { background: #2d2d4e; }
+
+.fb-login-notice {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f8f9fb;
+  border: 1px solid #e8eaf0;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  line-height: 1.5;
+}

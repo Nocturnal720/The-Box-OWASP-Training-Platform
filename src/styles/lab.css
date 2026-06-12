@@ -1,0 +1,504 @@
+/* ============================================================================
+   MODERN LAB PAGE STYLING
+   ========================================================================== */
+
+.lab-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f4f0 0%, #faf9f7 100%);
+  padding: 0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ── Header Section ── */
+.lab-header {
+  background: white;
+  border-bottom: 1px solid #e5e2db;
+  padding: 40px 48px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.lab-back-btn {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #666;
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.lab-back-btn:hover {
+  border-color: #999;
+  color: #333;
+  background: #f9f9f9;
+}
+
+.lab-title {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -0.01em;
+}
+
+.lab-description {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* ── Tabs Navigation ── */
+.lab-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 0 48px;
+  background: white;
+  border-bottom: 1px solid #e5e2db;
+  overflow-x: auto;
+}
+
+.lab-tab {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 16px 24px;
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.lab-tab:hover {
+  color: #333;
+}
+
+.lab-tab.active {
+  color: #111;
+  border-bottom-color: #111;
+}
+
+/* ── Content Area ── */
+.lab-content {
+  padding: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tab-panel {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Challenge Box ── */
+.challenge-box {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #e5e2db;
+}
+
+.challenge-box h2 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #111;
+  font-weight: 500;
+}
+
+.challenge-text {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ── Input Group ── */
+.input-group {
+  margin: 24px 0;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.lab-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: white;
+}
+
+.lab-input:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.lab-input:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* ── Button Group ── */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.lab-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.lab-button.primary {
+  background: #111;
+  color: white;
+}
+
+.lab-button.primary:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.lab-button.primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.lab-button.secondary {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.lab-button.secondary:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+/* ── Attempts Counter ── */
+.attempts-counter {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #999;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── Result Box ── */
+.result-box {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  animation: slideIn 0.3s ease-out;
+}
+
+.result-box.success {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.result-box.error {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.result-error {
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.result-user h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #111;
+}
+
+.user-card {
+  display: grid;
+  gap: 8px;
+}
+
+.user-field {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-field .label {
+  font-weight: 500;
+  color: #666;
+  font-size: 13px;
+}
+
+.user-field .value {
+  color: #111;
+  font-weight: 500;
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+}
+
+.user-field .value.role {
+  background: #fef3c7;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ── Success Box ── */
+.success-box {
+  margin-top: 24px;
+  padding: 20px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  color: #047857;
+}
+
+.success-box p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.lesson {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── Learn Box ── */
+.learn-box {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #e5e2db;
+}
+
+.learn-box h2 {
+  margin: 0 0 24px 0;
+  font-size: 20px;
+  color: #111;
+  font-weight: 500;
+}
+
+.concept-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e2db;
+}
+
+.concept-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.concept-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.concept-section p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.concept-section ul {
+  margin: 12px 0 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.example-code {
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #333;
+  overflow-x: auto;
+}
+
+.example-code code {
+  display: block;
+  margin: 4px 0;
+}
+
+/* ── Hints Box ── */
+.hints-box {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #e5e2db;
+}
+
+.hints-box h2 {
+  margin: 0 0 24px 0;
+  font-size: 20px;
+  color: #111;
+  font-weight: 500;
+}
+
+.hint-card {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f9f8f6;
+  border-left: 3px solid #ddd;
+  border-radius: 6px;
+}
+
+.hint-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.hint-card p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.hint-card code {
+  display: block;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #e5e2db;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #333;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.hint-card ul {
+  margin: 8px 0 0 20px;
+  padding: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* ── Stats Section ── */
+.lab-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stat {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e2db;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.stat-value.completed {
+  color: #059669;
+}
+
+.stat-value.active {
+  color: #f59e0b;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .lab-header {
+    padding: 24px;
+  }
+
+  .lab-tabs {
+    padding: 0 24px;
+  }
+
+  .lab-content {
+    padding: 24px;
+  }
+
+  .challenge-box,
+  .learn-box,
+  .hints-box {
+    padding: 20px;
+  }
+
+  .lab-title {
+    font-size: 24px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .lab-stats {
+    padding: 24px;
+    grid-template-columns: 1fr;
+  }
+}

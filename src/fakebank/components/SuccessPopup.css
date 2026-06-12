@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap');
+
+.sp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: sp-fade .18s ease;
+}
+@keyframes sp-fade { 
+  from { opacity: 0 } 
+  to { opacity: 1 } 
+}
+
+.sp-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 93vw;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(26,26,46,.18), 0 4px 16px rgba(26,26,46,.08);
+  font-family: 'Sora', sans-serif;
+  animation: sp-up .2s ease;
+}
+@keyframes sp-up { 
+  from { transform: translateY(16px); opacity: 0 } 
+  to { transform: none; opacity: 1 } 
+}
+
+/* header */
+.sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.sp-badge { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.sp-badge-icon {
+  width: 30px; 
+  height: 30px;
+  background: #d4edda;
+  border: 1.5px solid #28a745;
+  border-radius: 7px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 14px;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.sp-badge-label {
+  font-size: 11px; 
+  font-weight: 600;
+  text-transform: uppercase; 
+  letter-spacing: .1em;
+  color: #1a8a4a;
+}
+
+.sp-close {
+  background: none; 
+  border: none;
+  font-size: 15px; 
+  color: #aaa;
+  cursor: pointer; 
+  padding: 4px 7px;
+  border-radius: 6px; 
+  line-height: 1;
+  transition: color .12s, background .12s;
+}
+
+.sp-close:hover { 
+  color: #1a1a2e; 
+  background: #f4f5f8; 
+}
+
+/* title + subtitle */
+.sp-title {
+  font-size: 21px; 
+  font-weight: 600;
+  color: #1a1a2e; 
+  letter-spacing: -.02em;
+  padding: 20px 20px 8px;
+  text-align: center;
+}
+
+.sp-subtitle {
+  font-size: 13px;
+  color: #666;
+  padding: 0 20px 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* stats grid */
+.sp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0 20px 20px;
+  padding: 16px;
+  background: #f8f9fb;
+  border-radius: 10px;
+}
+
+.sp-stat-item {
+  text-align: center;
+}
+
+.sp-stat-number {
+  font-size: 24px;
+  font-weight: 600;
+  color: #28a745;
+  margin-bottom: 4px;
+}
+
+.sp-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #aaa;
+}
+
+/* sections */
+.sp-section {
+  margin: 0 20px 16px;
+  border: 1px solid #d4edda;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sp-section-head {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #1a8a4a;
+  background: #f0faf4;
+  padding: 7px 13px;
+  border-bottom: 1px solid #d4edda;
+}
+
+.sp-section-body {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.65;
+  padding: 11px 13px;
+}
+
+/* buttons */
+.sp-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 0 20px 20px;
+}
+
+.sp-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: 'Sora', sans-serif;
+}
+
+.sp-btn-primary {
+  background: #28a745;
+  color: white;
+}
+
+.sp-btn-primary:hover {
+  background: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+}
+
+.sp-btn-primary:active {
+  transform: translateY(0);
+}
+
+.sp-btn-secondary {
+  background: #f0f2f5;
+  color: #666;
+}
+
+.sp-btn-secondary:hover {
+  background: #e8eaf0;
+  color: #333;
+}
+
+/* scrollbar styling */
+.sp-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sp-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sp-modal::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.sp-modal::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .sp-modal {
+    width: 95vw;
+  }
+  
+  .sp-title {
+    font-size: 18px;
+  }
+  
+  .sp-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .sp-buttons {
+    flex-direction: column;
+  }
+}

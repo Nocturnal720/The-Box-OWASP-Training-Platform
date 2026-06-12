@@ -1,0 +1,77 @@
+.transfer-wrapper {
+  max-width: 480px;
+}
+
+.transfer-card {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.transfer-field {
+  margin-bottom: 16px;
+}
+
+.transfer-field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 8px;
+  font-family: 'Sora', sans-serif;
+}
+
+.transfer-card input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid #e8eaf0;
+  border-radius: 9px;
+  background: #f8f9fb;
+  color: #1a1a2e;
+  font-size: 15px;
+  font-family: 'Sora', sans-serif;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.transfer-card input:focus {
+  border-color: #1a1a2e;
+  background: #fff;
+}
+
+.transfer-card input::placeholder { color: #c5c2bc; }
+
+.transfer-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 9px;
+  background: #1a1a2e;
+  color: white;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+}
+
+.transfer-btn:hover { background: #2d2d4e; }
+
+.transfer-notice {
+  margin-top: 16px;
+  padding: 11px 14px;
+  background: #f8f9fb;
+  border: 1px solid #e8eaf0;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+}

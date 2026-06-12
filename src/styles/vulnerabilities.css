@@ -1,0 +1,168 @@
+/* ===============================
+   SHARED VULNERABILITY PAGE STYLE
+================================ */
+
+/* Page Layout */
+.vuln-page {
+  min-height: 100vh;
+  padding: 60px 10%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #0f2027);
+  color: white;
+  position: relative;
+}
+
+/* Title */
+.vuln-page .vuln-title {
+  font-size: 42px;
+  color: #00ff9d;
+  margin-bottom: 40px;
+}
+
+/* Section Headings */
+.vuln-page .vuln-section-title {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #00ff9d;
+}
+
+/* Description Text */
+.vuln-page .vuln-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #dcdcdc;
+}
+
+/* Code Block */
+.vuln-page .code-block {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-family: monospace;
+  color: #00ff9d;
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  overflow-x: auto;
+}
+
+/* Lab Container */
+.vuln-page .lab-container {
+  margin-top: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.15);
+}
+
+/* Input Field (Lab) */
+.vuln-page .lab-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid #00ff9d;
+  background: #111;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.vuln-page .lab-input:focus {
+  box-shadow: 0 0 10px #00ff9d;
+}
+
+/* Lab Button */
+.vuln-page .lab-button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #00ff9d, #00cc7a);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+}
+
+.vuln-page .lab-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.9);
+}
+
+/* Flag Display */
+.vuln-page .flag-box {
+  margin-top: 25px;
+  padding: 15px;
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid #00ff9d;
+  border-radius: 8px;
+  color: #00ff9d;
+  font-weight: bold;
+}
+
+/* Attempt Counter */
+.vuln-page .attempt-counter {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+/* Mitigation Box */
+.vuln-page .mitigation-box {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(0, 150, 255, 0.08);
+  border-left: 4px solid #00ff9d;
+  border-radius: 8px;
+}
+
+/* Back Button */
+.vuln-page .back-button {
+  margin-top: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  border: 1px solid #00ff9d;
+  color: #00ff9d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.vuln-page .back-button:hover {
+  background: #00ff9d;
+  color: black;
+}
+
+/* ===== LAB TABLE ===== */
+
+.vuln-page .result-table {
+  margin-top: 25px;
+  overflow-x: auto;
+}
+
+.vuln-page .result-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vuln-page .result-table th,
+.vuln-page .result-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.vuln-page .result-table th {
+  background: rgba(0, 255, 157, 0.15);
+  color: #00ff9d;
+}
+
+.vuln-page .result-table tr:hover {
+  background: rgba(0, 255, 157, 0.08);
+}
